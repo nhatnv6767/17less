@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 viewEngine(app)
 initWebRoutes(app)
 
-connectDB(app)
+connectDB();
 
 let port = process.env.PORT;
 app.listen(port, () => {
