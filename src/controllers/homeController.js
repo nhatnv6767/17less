@@ -13,6 +13,11 @@ let getHomePage = async (req, res) => {
 
 }
 
+let getCRUD = (req, res) => {
+    return res.send("Get CRUD ")
+}
+
 module.exports = {
     getHomePage: getHomePage,
+    getCRUD: getCRUD,
 }

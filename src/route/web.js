@@ -11,6 +11,7 @@ let initWebRoutes = (app) => {
     router.get('/about', (req, res) => {
         return res.send("How about today")
     })
+    router.get('/crud', homeController.getCRUD)
     return app.use("/", router);
 }
 
