@@ -5,7 +5,8 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('checkdata', 'root', '', {
     host: 'localhost',
     /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-    dialect: 'mysql'
+    dialect: 'mysql',
+    logging: false,
 });
 
 let connectDB = async () => {
