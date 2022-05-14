@@ -1,5 +1,5 @@
 // nơi mà mỗi 1 khi truy cập vào đường link của website thì nó sẽ vào file này đầu tiên
-import exports from "express"
+import express from 'express';
 
 let router = express.Router();
 
