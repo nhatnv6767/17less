@@ -13,10 +13,15 @@ module.exports = {
      * 
      * SEE ON DOCUMENT: ->>>> https://sequelize.org/docs/v6/other-topics/migrations/
     */
-    return queryInterface.bulkInsert('Users', [{
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'example@example.com',
+    return queryInterface.bulkInsert('users', [{
+      email: 'admin@gmail.com',
+      password: '123456',
+      firstName: 'Mr.',
+      lastName: 'Admin',
+      address: 'Galaxy',
+      gender: 1,
+      typeRole: 'ROLE',
+      keyRole: 'R1',
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
@@ -29,7 +34,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    return queryInterface.bulkDelete('Users', null, {});
+    return queryInterface.bulkDelete('users', null, {});
   }
 };
 
