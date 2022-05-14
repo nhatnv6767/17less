@@ -12,7 +12,7 @@ let app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 viewEngine(app)
-initwebRoutes(app)
+initWebRoutes(app)
 
 let port = process.env.PORT;
 app.listen(port, () => {
