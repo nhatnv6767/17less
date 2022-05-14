@@ -1,8 +1,9 @@
 import bcrypt from 'bcryptjs';
 const salt = bcrypt.genSaltSync(10);
 
-let createNewUser = (data) => {
-    console.log("Data from service", data);
+let createNewUser = async (data) => {
+    let hashPasswordFromBcrypt = await hashUserPassword(data.password)
+    console.log("Hash password", hashPasswordFromBcrypt);
 }
 
 let hashUserPassword = (password) => {
