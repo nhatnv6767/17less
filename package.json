@@ -1,0 +1,24 @@
+{
+  "name": "17less",
+  "version": "1.0.0",
+  "description": "backend nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhatnv6767/17less.git"
+  },
+  "keywords": [
+    "fullstack",
+    "nodejs",
+    "express"
+  ],
+  "author": "bhnone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nhatnv6767/17less/issues"
+  },
+  "homepage": "https://github.com/nhatnv6767/17less#readme"
+}
