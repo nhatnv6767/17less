@@ -8,7 +8,7 @@ const sequelize = new Sequelize('checkdata', 'root', null, {
     dialect: 'mysql'
 });
 
-let connectDB = () => {
+let connectDB = async () => {
     try {
         await sequelize.authenticate();
         console.log('Connection has been established successfully.');
