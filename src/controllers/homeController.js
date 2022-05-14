@@ -1,5 +1,6 @@
 let getHomePage = (req, res) => {
-    return res.send("Hello World from controller")
+    // vì đã cấu hình đường dẫn trong file viewEngine.js nên sẽ tự động tìm 
+    return res.render('homepage.ejs')
 }
 
 module.exports = {
