@@ -71,8 +71,13 @@ let getUserInfoById = (userId) => {
     })
 }
 
+let updateUserData = (data) => {
+
+}
+
 module.exports = {
     createNewUser: createNewUser,
     getAllUser: getAllUser,
     getUserInfoById: getUserInfoById,
+    updateUserData: updateUserData,
 }
