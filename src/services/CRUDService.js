@@ -42,7 +42,9 @@ let getAllUser = () => {
     return new Promise(async (resolve, reject) => {
         try {
             // model name
-            let users = db.User.findAll();
+            let users = db.User.findAll({
+                raw: true,
+            });
             // => return
             resolve(users);
         } catch (e) {
