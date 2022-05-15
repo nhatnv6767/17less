@@ -55,7 +55,8 @@ let putCRUD = async (req, res) => {
 }
 
 let deleteCRUD = async (req, res) => {
-
+    let id = req.query.id
+    await CRUDService.deleteUserById(id)
 }
 
 module.exports = {
