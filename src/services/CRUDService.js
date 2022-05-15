@@ -72,7 +72,17 @@ let getUserInfoById = (userId) => {
 }
 
 let updateUserData = (data) => {
-    console.log('data from service', data);
+    return new Promise(async (resolve, reject) => {
+        try {
+            
+            await db.User.update({
+
+            })
+        } catch (e) {
+            console.log(e)
+            reject(e);
+        }
+    })
 }
 
 module.exports = {
