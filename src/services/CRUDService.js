@@ -58,11 +58,12 @@ let getUserInfoById = (userId) => {
         try {
             let user = await db.User.findOne({
                 where: { id: userId },
+                raw: true,
             })
             if (user) {
                 resolve(user);
             } else {
-                resolve([])
+                resolve({})
             }
         } catch (e) {
             reject(e);

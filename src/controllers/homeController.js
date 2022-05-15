@@ -35,8 +35,11 @@ let getEditCRUD = async (req, res) => {
     let userId = req.query.id
     if (userId) {
         let userData = await CRUDService.getUserInfoById(userId)
-        console.log(userData)
-        return res.send(`Found a user!`)
+        // check user data not found
+
+        return res.render('editCRUD.ejs', {
+            userData: userData
+        })
     }
     else {
         return res.send(`Users not found!`)
