@@ -24,8 +24,13 @@ let postCRUD = async (req, res) => {
     return res.send("Post crud from server")
 }
 
+let displayGetCRUD = async (req, res) => {
+    return res.send('Display get CRUD from controller')
+}
+
 module.exports = {
     getHomePage: getHomePage,
     getCRUD: getCRUD,
     postCRUD: postCRUD,
+    displayGetCRUD: displayGetCRUD,
 }
