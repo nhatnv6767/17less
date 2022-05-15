@@ -24,11 +24,23 @@
             <th>Last Name</th>
             <th>Address</th>
         </tr>
-        <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-        </tr>
+
+        <% for(let i=0; i < dataTable.length; i++) { %>
+            <tr>
+                <td>
+                    <%= dataTable[i].email %>
+                </td>
+                <td>
+                    <%= dataTable[i].firstName %>
+                </td>
+                <td>
+                    <%= dataTable[i].lastName %>
+                </td>
+                <td>
+                    <%= dataTable[i].address %>
+                </td>
+            </tr>
+            <% } %>
 
     </table>
 </body>
