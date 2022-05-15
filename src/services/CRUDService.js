@@ -78,9 +78,15 @@ let updateUserData = (data) => {
                 where: { id: data.id },
                 raw: true,
             })
-            await db.User.update({
+            if (user) {
+                user.firstName = data.firstName;
+                user.lastName = data.lastName;
+                user.address = data.address;
 
-            })
+                await user.save();
+            } else {
+                resolve()
+            }
         } catch (e) {
             console.log(e)
             reject(e);
