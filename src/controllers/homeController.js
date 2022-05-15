@@ -34,7 +34,8 @@ let displayGetCRUD = async (req, res) => {
 let getEditCRUD = async (req, res) => {
     let userId = req.query.id
     if (userId) {
-        let userData = CRUDService.getUserInfoById(userId)
+        let userData = await CRUDService.getUserInfoById(userId)
+        console.log(userData)
         return res.send(`Found a user!`)
     }
     else {

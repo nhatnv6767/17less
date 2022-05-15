@@ -53,7 +53,7 @@ let getAllUser = () => {
     })
 }
 
-let getUserInfoById = (id) => {
+let getUserInfoById = (userId) => {
     return new Promise(async (resolve, reject) => {
         try {
             let user = await db.User.findOne({
