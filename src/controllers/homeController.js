@@ -32,7 +32,10 @@ let displayGetCRUD = async (req, res) => {
 }
 
 let getEditCRUD = async (req, res) => {
-    console.log(re.query.id)
+    let userId = req.query.id
+    let userData = CRUDService.getUserInfoById()
+
+    return res.send("hello edit page")
 }
 
 module.exports = {
