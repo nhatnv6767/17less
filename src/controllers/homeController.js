@@ -33,7 +33,10 @@ let displayGetCRUD = async (req, res) => {
 
 let getEditCRUD = async (req, res) => {
     let userId = req.query.id
-    let userData = CRUDService.getUserInfoById()
+    if (userId) {
+        let userData = CRUDService.getUserInfoById(userId)
+    }
+
 
     return res.send("hello edit page")
 }

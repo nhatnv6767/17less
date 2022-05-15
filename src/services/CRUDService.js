@@ -53,7 +53,12 @@ let getAllUser = () => {
     })
 }
 
+let getUserInfoById = (id) => {
+
+}
+
 module.exports = {
     createNewUser: createNewUser,
     getAllUser: getAllUser,
+    getUserInfoById: getUserInfoById,
 }
