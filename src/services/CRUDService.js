@@ -72,7 +72,7 @@ let getUserInfoById = (userId) => {
 }
 
 let updateUserData = (data) => {
-
+    console.log('data from service', data);
 }
 
 module.exports = {
