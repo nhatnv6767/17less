@@ -38,12 +38,15 @@ let getEditCRUD = async (req, res) => {
         // check user data not found
 
         return res.render('editCRUD.ejs', {
-            userData: userData
+            user: userData
         })
     }
     else {
         return res.send(`Users not found!`)
     }
+
+}
+let putCRUD = async (req, res) => {
 
 }
 
@@ -53,4 +56,5 @@ module.exports = {
     postCRUD: postCRUD,
     displayGetCRUD: displayGetCRUD,
     getEditCRUD: getEditCRUD,
+    putCRUD: putCRUD,
 }
