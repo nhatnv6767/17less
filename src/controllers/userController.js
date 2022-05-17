@@ -16,7 +16,10 @@ let handleLogin = async (req, res) => {
     return res.status(200).json({
         errCode: userData.errCode,
         message: userData.errMessage,
-        userData,
+
+        // nếu mà có biến userData thì trả ra giá trị của nó, còn ko thì trả ra {}
+        user: userData.user ? userData.user : {}
+
     })
 }
 
