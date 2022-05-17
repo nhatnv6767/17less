@@ -10,7 +10,7 @@ let handleUserLogin = (email, password) => {
             if (isExist) {
                 // user already exists
 
-                let user = await db.Users.findOne({
+                let user = await db.User.findOne({
                     where: { email: email },
                 })
                 // giải thích bên dưới
@@ -30,7 +30,6 @@ let handleUserLogin = (email, password) => {
                         userData.errMessage = `User's not found`
                 }
 
-                resolve()
             } else {
                 // return error
                 userData.errCode = 1;
