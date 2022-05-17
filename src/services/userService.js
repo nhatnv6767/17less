@@ -1,7 +1,19 @@
 import db from '../models/index'
 
 let handleUserLogin = (email, password) => {
-
+    return new Promise(async (resolve, reject) => {
+        try {
+            let isExist = await checkUserEmail(email);
+            if (isExist) {
+                // user already exists
+                // compare password
+            } else {
+                // return error
+            }
+        } catch (e) {
+            reject(e);
+        }
+    })
 }
 
 let checkUserEmail = (userEmail) => {
