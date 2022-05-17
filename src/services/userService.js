@@ -13,9 +13,13 @@ let handleUserLogin = (email, password) => {
                 let user = await db.Users.findOne({
                     where: { email: email },
                 })
+                // giải thích bên dưới
                 if (user) {
                     // compare password
                     // bcrypt.compareSync("not_bacon",hash); 
+                } else {
+                    userData.errCode = 2,
+                        userData.errMessage = `User's not found`
                 }
 
                 resolve()
@@ -23,8 +27,9 @@ let handleUserLogin = (email, password) => {
                 // return error
                 userData.errCode = 1;
                 userData.errMessage = `Your's Email isn't exist. Try again!`
-                resolve(userData);
+
             }
+            resolve(userData);
         } catch (e) {
             reject(e);
         }
@@ -62,3 +67,13 @@ let checkUserEmail = (userEmail) => {
 module.exports = {
     handleUserLogin: handleUserLogin,
 }
+
+
+/**
+ * 
+ * check ở trên rồi nhưng vẫn phải check ở dưới, check 2 lần
+ * lý do là vì, trong thực tế, nhiều lúc trong lúc user đăng nhập
+ * mà bản ghi đó bị xoá hay có vấn đề gì hoặc tài khoản bị khoá chẳng hạn
+ * thì user phải bị 1 lần check như ở dưới để chắc chắn ko có lỗi đối với
+ * user đó
+ */
