@@ -1,4 +1,5 @@
 import db from '../models/index'
+import bcrypt from 'bcryptjs'
 
 let handleUserLogin = (email, password) => {
     return new Promise(async (resolve, reject) => {
@@ -9,6 +10,7 @@ let handleUserLogin = (email, password) => {
             if (isExist) {
                 // user already exists
                 // compare password
+                // bcrypt.compareSync("not_bacon",hash); 
                 resolve()
             } else {
                 // return error
@@ -16,6 +18,16 @@ let handleUserLogin = (email, password) => {
                 userData.errMessage = `Your's Email isn't exist. Try again!`
                 resolve(userData);
             }
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+let compareUserPassword = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
         } catch (e) {
             reject(e);
         }
