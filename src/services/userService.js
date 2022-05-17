@@ -12,6 +12,7 @@ let handleUserLogin = (email, password) => {
 
                 let user = await db.User.findOne({
                     where: { email: email },
+                    attributes: ['email', 'roleId', 'password']
                 })
                 // giải thích bên dưới
                 if (user) {
@@ -20,6 +21,8 @@ let handleUserLogin = (email, password) => {
                     if (check) {
                         userData.errCode = 0;
                         userData.errMessage = 'Ok'
+                        // xoa password khi show API
+                        delete user.password;
                         userData.user = user;
                     } else {
                         userData.errCode = 3;
