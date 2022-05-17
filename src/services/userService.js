@@ -9,8 +9,15 @@ let handleUserLogin = (email, password) => {
             let isExist = await checkUserEmail(email);
             if (isExist) {
                 // user already exists
-                // compare password
-                // bcrypt.compareSync("not_bacon",hash); 
+
+                let user = await db.Users.findOne({
+                    where: { email: email },
+                })
+                if (user) {
+                    // compare password
+                    // bcrypt.compareSync("not_bacon",hash); 
+                }
+
                 resolve()
             } else {
                 // return error
