@@ -12,7 +12,11 @@ require('dotenv').config();
 let app = express()
 
 app.use(cors({
-    origin: '*'
+    origin: function (origin, callback) {
+        return callback(null, true);
+    },
+    optionsSuccessStatus: 200,
+    credentials: true
 }));
 
 //config app
