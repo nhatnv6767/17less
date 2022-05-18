@@ -7,10 +7,17 @@ import connectDB from './config/connectDB'
 import cors from 'cors'
 require('dotenv').config();
 
+
 // instance cua express
 let app = express()
 
-app.use(cors({ origin: true }))
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200,
+    credentials: true,
+}
+app.use(cors(corsOptions));
+
 //config app
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
