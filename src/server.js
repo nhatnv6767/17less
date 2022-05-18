@@ -11,12 +11,9 @@ require('dotenv').config();
 // instance cua express
 let app = express()
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200,
-    credentials: true,
-}
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: '*'
+}));
 
 //config app
 app.use(bodyParser.json())
