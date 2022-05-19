@@ -171,11 +171,42 @@ let deleteUser = (userId) => {
     })
 }
 
+let updateUserData = (userData) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: data.id }
+            })
+            if (user) {
+                await db.User.save({
+                    firstName: data.firstName,
+                    lastName: data.lastName,
+                    address: data.address,
+                })
+
+                resolve({
+                    errCode: 0,
+                    message: 'Update the user succeed!'
+                })
+
+            } else {
+                resolve({
+                    errCode: 1,
+                    errMessage: 'User not found!'
+                })
+            }
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,
     deleteUser: deleteUser,
+    updateUserData: updateUserData,
 }
 
 
