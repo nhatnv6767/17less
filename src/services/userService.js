@@ -93,9 +93,20 @@ let getAllUsers = (userId) => {
     })
 }
 
+let createNewUser = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
+    createNewUser: createNewUser,
 }
 
 
