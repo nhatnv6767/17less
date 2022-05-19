@@ -49,8 +49,18 @@ let handleCreateNewUser = async (req, res) => {
     return res.status(200).json(message)
 }
 
+let handleEditUser = async (req, res) => {
+
+}
+
+let handleDeleteUser = async (req, res) => {
+
+}
+
 module.exports = {
     handleLogin: handleLogin,
     handleGetAllUsers: handleGetAllUsers,
     handleCreateNewUser: handleCreateNewUser,
+    handleEditUser: handleEditUser,
+    handleDeleteUser: handleDeleteUser,
 }
