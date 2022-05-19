@@ -174,6 +174,12 @@ let deleteUser = (userId) => {
 let updateUserData = (userData) => {
     return new Promise(async (resolve, reject) => {
         try {
+            if (!userData.id) {
+                resolve({
+                    errCode: 2,
+                    errMessage: 'Missing required parameter'
+                })
+            }
             let user = await db.User.findOne({
                 where: { id: userData.id },
                 raw: false,
