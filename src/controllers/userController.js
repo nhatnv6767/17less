@@ -41,11 +41,14 @@ let handleGetAllUsers = async (req, res) => {
         users
     })
 
+}
 
+let handleCreateNewUser = async (req, res) => {
 
 }
 
 module.exports = {
     handleLogin: handleLogin,
     handleGetAllUsers: handleGetAllUsers,
+    handleCreateNewUser: handleCreateNewUser,
 }
