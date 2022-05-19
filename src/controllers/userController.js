@@ -23,6 +23,11 @@ let handleLogin = async (req, res) => {
     })
 }
 
+let handleGetAllUsers = async (req, res) => {
+    let users = await userService.getAllUsers()
+}
+
 module.exports = {
     handleLogin: handleLogin,
+    handleGetAllUsers: handleGetAllUsers,
 }
