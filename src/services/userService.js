@@ -111,7 +111,10 @@ let createNewUser = (data) => {
                 gender: data.gender === '1' ? true : false,
                 roleId: data.roleId,
             })
-            resolve('ok create a new user succeed')
+            resolve({
+                errCode: 0,
+                message: 'OK',
+            })
 
         } catch (e) {
             reject(e);
