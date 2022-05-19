@@ -6,8 +6,10 @@
     "host": "127.0.0.1",
     "dialect": "mysql",
     "logging": false,
-    "raw": true,
-    "timezone": "UTC+9"
+    "query": {
+      "raw": true
+    },
+    "timezone": "+09:00"
   },
   "test": {
     "username": "root",
