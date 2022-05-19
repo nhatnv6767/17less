@@ -74,7 +74,8 @@ let getAllUsers = (userId) => {
                 users = await db.User.findAll({
 
                 })
-            } else {
+            }
+            if (userId && userId !== 'ALL') {
                 users = await db.User.findOne({
                     where: { id: userId },
                 })
