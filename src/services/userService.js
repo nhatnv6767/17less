@@ -144,10 +144,34 @@ let hashUserPassword = (password) => {
     })
 }
 
+let deleteUser = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let user = await db.User.findOne({
+                where: { id: userId },
+            })
+            if (!user) {
+                resolve({
+                    errCode: 2,
+                    errMessage: `The user isn't exist`
+                })
+            }
+            await user.destroy()
+            resolve({
+                errCode: 0,
+                message: `The user is deleted successfully`
+            })
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     handleUserLogin: handleUserLogin,
     getAllUsers: getAllUsers,
     createNewUser: createNewUser,
+    deleteUser: deleteUser,
 }
 
 
