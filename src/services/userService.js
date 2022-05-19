@@ -98,6 +98,14 @@ let getAllUsers = (userId) => {
 let createNewUser = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
+            // check email is exist???
+            let check = await checkUserEmail(data.email);
+            if (check) {
+                resolve({
+                    errCode: 1,
+                    message: 'Your email is already in use, Plz try another email!',
+                })
+            }
 
             let hashPasswordFromBcrypt = await hashUserPassword(data.password)
             // modelName của model user.js
