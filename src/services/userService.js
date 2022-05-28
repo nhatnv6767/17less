@@ -199,11 +199,13 @@ let updateUserData = (userData) => {
   });
 };
 
-let getAllCodeService = () => {
+let getAllCodeService = (typeInput) => {
   return new Promise(async (resolve, reject) => {
     try {
       let res = {};
-      let allcode = await db.Allcode.findAll();
+      let allcode = await db.Allcode.findAll({
+        where: { type: typeInput },
+      });
       res.errCode = 0;
       res.data = allcode;
       resolve(res);
