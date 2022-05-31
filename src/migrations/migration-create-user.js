@@ -53,3 +53,5 @@ module.exports = {
     await queryInterface.dropTable("users");
   },
 };
+
+//npx sequelize-cli db:migrate --to migration-create-user.js
