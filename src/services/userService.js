@@ -109,10 +109,10 @@ let createNewUser = (data) => {
           firstName: data.firstName,
           lastName: data.lastName,
           address: data.address,
-          phonenumber: data.phoneNumber,
+          phonenumber: data.phonenumber,
           gender: data.gender,
-          roleId: data.role,
-          positionId: data.position,
+          roleId: data.roleId,
+          positionId: data.positionId,
         });
         resolve({
           errCode: 0,
