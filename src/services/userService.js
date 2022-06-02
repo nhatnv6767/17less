@@ -189,7 +189,7 @@ let updateUserData = (userData) => {
         user.roleId = userData.roleId;
         user.positionId = userData.positionId;
         user.gender = userData.gender;
-        user.phonenumber = userData.phoneNumber;
+        user.phonenumber = userData.phonenumber;
 
         await user.save();
 
