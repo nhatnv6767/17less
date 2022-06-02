@@ -31,3 +31,5 @@ module.exports = {
     ]);
   },
 };
+
+// npx sequelize-cli db:migrate
