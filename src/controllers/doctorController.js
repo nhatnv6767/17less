@@ -4,6 +4,7 @@ let getTopDoctorHome = async (req, res) => {
   let limit = req.query.limit;
   if (!limit) limit = 10;
   try {
+    // +limit : chuyển từ dạng string sang number, ko cần phải ép kiểu Number
     let response = await doctorService.getTopDoctorHome(+limit);
 
     return res.status(200).json(response);
