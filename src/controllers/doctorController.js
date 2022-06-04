@@ -1,4 +1,4 @@
-import userService from "../services/userService";
+import doctorService from "../services/doctorService";
 
 let getTopDoctorHome = async (req, res) => {
   console.log("getTopDoctorHome");
