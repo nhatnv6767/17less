@@ -7,7 +7,7 @@ let getTopDoctorHome = (limitInput) => {
         limit: limitInput,
         order: [["createdAt", "DESC"]],
         attributes: {
-          exclude: ["password"],
+          exclude: ["password", "image"],
         },
       });
 
