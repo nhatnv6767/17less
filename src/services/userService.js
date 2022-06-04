@@ -191,6 +191,9 @@ let updateUserData = (userData) => {
         user.positionId = userData.positionId;
         user.gender = userData.gender;
         user.phonenumber = userData.phonenumber;
+        if (userData.avatar) {
+          user.image = userData.avatar;
+        }
 
         await user.save();
 
