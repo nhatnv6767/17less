@@ -43,6 +43,9 @@ let getAllDoctors = () => {
         where: {
           roleId: "R2",
         },
+        attributes: {
+          exclude: ["password"],
+        },
       });
       resolve({
         errCode: 0,
