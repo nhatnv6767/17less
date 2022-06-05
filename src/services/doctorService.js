@@ -70,7 +70,7 @@ let saveDetailInforDoctor = (inputData) => {
           errMessage: "Missing parameter",
         });
       } else {
-        await db.Markdown.save({
+        await db.Markdown.create({
           contentHTML: inputData.contentHTML,
           contentMarkdown: inputData.contentMarkdown,
           description: inputData.description,
