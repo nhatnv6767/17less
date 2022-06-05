@@ -36,6 +36,25 @@ let getTopDoctorHome = (limitInput) => {
   });
 };
 
+let getAllDoctors = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let doctors = await db.User.findAll({
+        where: {
+          roleId: "R2",
+        },
+      });
+      resolve({
+        errCode: 0,
+        data: doctors,
+      });
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
+  getAllDoctors: getAllDoctors,
 };
