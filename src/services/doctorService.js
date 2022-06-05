@@ -44,7 +44,7 @@ let getAllDoctors = () => {
           roleId: "R2",
         },
         attributes: {
-          exclude: ["password"],
+          exclude: ["password", "image"],
         },
       });
       resolve({
