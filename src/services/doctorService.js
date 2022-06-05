@@ -57,7 +57,28 @@ let getAllDoctors = () => {
   });
 };
 
+let saveDetailInforDoctor = (inputData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      if (
+        !inputData.id ||
+        !inputData.contentHTML ||
+        !inputData.contentMarkdown
+      ) {
+        resolve({
+          errCode: 1,
+          errMessage: "Missing parameter",
+        });
+      } else {
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
 module.exports = {
   getTopDoctorHome: getTopDoctorHome,
   getAllDoctors: getAllDoctors,
+  saveDetailInforDoctor: saveDetailInforDoctor,
 };
