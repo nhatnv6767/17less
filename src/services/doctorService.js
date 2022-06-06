@@ -90,7 +90,7 @@ let saveDetailInforDoctor = (inputData) => {
 let getDetailDoctorById = (inputId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!id) {
+      if (!inputId) {
         resolve({
           errCode: 1,
           errMessage: "Missing parameter",
