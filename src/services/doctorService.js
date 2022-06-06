@@ -101,7 +101,12 @@ let getDetailDoctorById = (inputId) => {
           attributes: {
             exclude: ["password", "image"],
           },
-          include: [{ model: db.Markdown }],
+          include: [
+            {
+              model: db.Markdown,
+              attributes: ["description", "contentHTML", "contentMarkdown"],
+            },
+          ],
           raw: true,
           nest: true,
         });
