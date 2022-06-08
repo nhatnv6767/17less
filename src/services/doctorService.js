@@ -117,9 +117,15 @@ let getDetailDoctorById = (inputId) => {
               attributes: ["valueEn", "valueVi"],
             },
           ],
-          raw: true,
+          raw: false,
           nest: true,
         });
+
+        // convert image -> base64
+        if (data && data.image) {
+          data.image =  new Buffer(data.image, "base64").toString("binary");
+        }
+
         resolve({
           errCode: 0,
           data: data,
