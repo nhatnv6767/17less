@@ -99,7 +99,7 @@ let getDetailDoctorById = (inputId) => {
         let data = await db.User.findOne({
           where: { id: inputId },
           attributes: {
-            exclude: ["password", "image"],
+            exclude: ["password"],
           },
           include: [
             {
