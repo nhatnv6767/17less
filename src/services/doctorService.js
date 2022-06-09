@@ -71,15 +71,28 @@ let saveDetailInforDoctor = (inputData) => {
                     errMessage: "Missing parameter",
                 });
             } else {
-                if(inputData.action === 'CREATE') {
+                if (inputData.action === 'CREATE') {
                     await db.Markdown.create({
                         contentHTML: inputData.contentHTML,
                         contentMarkdown: inputData.contentMarkdown,
                         description: inputData.description,
                         doctorId: inputData.doctorId,
                     });
-                } else if(inputData.action === 'EDIT'){
+                } else if (inputData.action === 'EDIT') {
+                    let doctorMarkdown = await db.Markdown.findOne({
+                        where: {
+                            doctorId: inputData.doctorId,
+                        },
+                        // để hiểu doctorMardown là 1 thằng sequelize object
+                        raw: true,
+                    })
 
+                    if (doctorMarkdown) {
+                        doctorMarkdown.contentHTML = inputData.contentHTML;
+                        doctorMarkdown.contentMarkdown = inputData.contentMarkdown;
+                        doctorMarkdown.description = inputData.description;
+                        await doctorMarkdown.save();
+                    }
                 }
 
                 resolve({
