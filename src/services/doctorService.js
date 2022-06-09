@@ -84,7 +84,7 @@ let saveDetailInforDoctor = (inputData) => {
                             doctorId: inputData.doctorId,
                         },
                         // để hiểu doctorMardown là 1 thằng sequelize object
-                        raw: true,
+                        raw: false,
                     })
 
                     if (doctorMarkdown) {
