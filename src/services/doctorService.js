@@ -91,6 +91,7 @@ let saveDetailInforDoctor = (inputData) => {
                         doctorMarkdown.contentHTML = inputData.contentHTML;
                         doctorMarkdown.contentMarkdown = inputData.contentMarkdown;
                         doctorMarkdown.description = inputData.description;
+                        // doctorMarkdown.updatedAt = new Date();
                         await doctorMarkdown.save();
                     }
                 }
