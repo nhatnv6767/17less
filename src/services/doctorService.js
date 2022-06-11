@@ -217,6 +217,12 @@ let bulkCreateSchedule = (data) => {
                     attributes: ['timeType', 'date', 'doctorId', 'maxNumber'],
                     raw: true,
                 });
+                if (existing && existing.length > 0) {
+                    existing = existing.map(item => {
+                        item.date = new Date(item.date).getTime();
+                        return item;
+                    });
+                }
                 let toCreate = _.differenceBy(schedule, existing, ['timeType', 'date']);
                 console.log("Check by Lodash Existing", toCreate);
                 console.log("Check by Lodash Find ALL", existing);
