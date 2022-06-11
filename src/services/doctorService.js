@@ -223,9 +223,10 @@ let bulkCreateSchedule = (data) => {
                         return item;
                     });
                 }
-                let toCreate = _.differenceBy(schedule, existing, ['timeType', 'date']);
+                let toCreate = _.differenceWith(schedule, existing, (a, b) => {
+                    return a.timeType === b.timeType && a.date === b.date;
+                });
                 console.log("Check by Lodash Existing", toCreate);
-                console.log("Check by Lodash Find ALL", existing);
 
                 // await db.Schedule.bulkCreate(schedule);
                 resolve({
