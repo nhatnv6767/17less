@@ -1,5 +1,9 @@
 import db from "../models/index";
 
+require('dotenv').config();
+
+const MAX_NUMBER_SCHEDULE = process.env.MAX_NUMBER_SCHEDULE;
+
 let getTopDoctorHome = (limitInput) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -171,6 +175,7 @@ let bulkCreateSchedule = (data) => {
                 });
             } else {
                 let schedule = data.arrSchedule;
+
                 console.log("Bulk Create Schedule Data", schedule);
                 console.log("Bulk Create Schedule Data", typeof data);
                 resolve('');
