@@ -85,7 +85,7 @@ let saveDetailInforDoctor = (inputData) => {
                         },
                         // để hiểu doctorMardown là 1 thằng sequelize object
                         raw: false,
-                    })
+                    });
 
                     if (doctorMarkdown) {
                         doctorMarkdown.contentHTML = inputData.contentHTML;
@@ -161,9 +161,21 @@ let getDetailDoctorById = (inputId) => {
     });
 };
 
+let bulkCreateSchedule = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            console.log("Bulk Create Schedule Data", data);
+            resolve('');
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getAllDoctors: getAllDoctors,
     saveDetailInforDoctor: saveDetailInforDoctor,
     getDetailDoctorById: getDetailDoctorById,
+    bulkCreateSchedule: bulkCreateSchedule,
 };
