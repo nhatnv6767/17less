@@ -183,7 +183,6 @@ let bulkCreateSchedule = (data) => {
                         return item;
                     });
                 }
-                console.log("Bulk Create Schedule Data", schedule);
 
                 // get all existing data
                 let existing = await db.Schedule.findAll({
