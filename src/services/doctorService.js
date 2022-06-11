@@ -175,7 +175,12 @@ let bulkCreateSchedule = (data) => {
                 });
             } else {
                 let schedule = data.arrSchedule;
-
+                if (schedule && schedule.length > 0) {
+                    schedule = schedule.map(item => {
+                        item.maxNumber = MAX_NUMBER_SCHEDULE;
+                        // go to react
+                    });
+                }
                 console.log("Bulk Create Schedule Data", schedule);
                 console.log("Bulk Create Schedule Data", typeof data);
                 resolve('');
