@@ -66,7 +66,7 @@ let bulkCreateSchedule = async (req, res) => {
 
 let getScheduleDoctorByDate = async (req, res) => {
     try {
-        let infor = await doctorService.bulkCreateSchedule(req.body);
+        let infor = await doctorService.getScheduleDoctorByDate(req.query.doctorId, req.query.date);
         return res.status(200).json(infor);
     } catch (e) {
         console.log(e);

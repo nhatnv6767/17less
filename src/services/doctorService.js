@@ -229,4 +229,5 @@ module.exports = {
     saveDetailInforDoctor: saveDetailInforDoctor,
     getDetailDoctorById: getDetailDoctorById,
     bulkCreateSchedule: bulkCreateSchedule,
+    getScheduleDoctorByDate: getScheduleDoctorByDate,
 };
