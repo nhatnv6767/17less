@@ -237,7 +237,6 @@ let getScheduleDoctorByDate = (doctorId, date) => {
                         doctorId: doctorId,
                         date: date,
                     },
-                    raw: false,
                 });
 
                 if (!dataSchedule) dataSchedule = [];
