@@ -182,7 +182,11 @@ let bulkCreateSchedule = (data) => {
                     });
                 }
                 console.log("Bulk Create Schedule Data", schedule);
-                resolve('');
+                await db.Schedule.bulkCreate(schedule);
+                resolve({
+                    errCode: 0,
+                    errMessage: "OK"
+                });
             }
 
         } catch (e) {
