@@ -183,7 +183,43 @@ let bulkCreateSchedule = (data) => {
                     });
                 }
                 console.log("Bulk Create Schedule Data", schedule);
-                await db.Schedule.bulkCreate(schedule);
+
+                //  TO TEST
+
+                /** Bulk Create Schedule Data [
+                 {
+                        doctorId: 32,
+                        date: 1654959600000,
+                        timeType: 'T1',
+                        maxNumber: '10'
+                      },
+                 {
+                        doctorId: 32,
+                        date: 1654959600000,
+                        timeType: 'T2',
+                        maxNumber: '10'
+                      },
+                 {
+                        doctorId: 32,
+                        date: 1654959600000,
+                        timeType: 'T3',
+                        maxNumber: '10'
+                      }
+                 ]
+
+                 *
+                 * **/
+                let existing = await db.Schedule.findAll({
+                    where: {
+                        doctorId: 32,
+                        date: 1654959600000,
+                    },
+                    attributes: ['timeType', 'date', 'doctorId', 'maxNumber']
+                });
+                let toCreate = _.differenceBy(schedule, existing, ['timeType', 'date']);
+                console.log("Check by Lodash", toCreate);
+
+                // await db.Schedule.bulkCreate(schedule);
                 resolve({
                     errCode: 0,
                     errMessage: "OK"
