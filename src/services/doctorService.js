@@ -178,11 +178,10 @@ let bulkCreateSchedule = (data) => {
                 if (schedule && schedule.length > 0) {
                     schedule = schedule.map(item => {
                         item.maxNumber = MAX_NUMBER_SCHEDULE;
-                        // go to react
+                        return item;
                     });
                 }
                 console.log("Bulk Create Schedule Data", schedule);
-                console.log("Bulk Create Schedule Data", typeof data);
                 resolve('');
             }
 
