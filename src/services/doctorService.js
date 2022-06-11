@@ -232,11 +232,17 @@ let getScheduleDoctorByDate = (doctorId, date) => {
                     errMessage: "Missing required parameters"
                 });
             } else {
-                let data = await db.Schedule.findAll({
+                let dataSchedule = await db.Schedule.findAll({
                     where: {
                         doctorId: doctorId,
                         date: date,
                     }
+                });
+
+                if (!dataSchedule) dataSchedule = [];
+                resolve({
+                    errCode: 0,
+                    data: dataSchedule
                 });
             }
         } catch (e) {
