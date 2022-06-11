@@ -214,10 +214,12 @@ let bulkCreateSchedule = (data) => {
                         doctorId: 32,
                         date: 1654959600000,
                     },
-                    attributes: ['timeType', 'date', 'doctorId', 'maxNumber']
+                    attributes: ['timeType', 'date', 'doctorId', 'maxNumber'],
+                    raw: true,
                 });
                 let toCreate = _.differenceBy(schedule, existing, ['timeType', 'date']);
-                console.log("Check by Lodash", toCreate);
+                console.log("Check by Lodash Existing", toCreate);
+                console.log("Check by Lodash Find ALL", existing);
 
                 // await db.Schedule.bulkCreate(schedule);
                 resolve({
