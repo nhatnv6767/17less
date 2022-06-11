@@ -164,9 +164,9 @@ let getDetailDoctorById = (inputId) => {
 let bulkCreateSchedule = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            console.log("Bulk Create Schedule Data", data);
+            let schedule = data.arrSchedule;
+            console.log("Bulk Create Schedule Data", schedule);
             console.log("Bulk Create Schedule Data", typeof data);
-            console.log("Bulk Create Schedule Data", data[0]);
             resolve('');
         } catch (e) {
             reject(e);
