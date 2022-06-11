@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
                 targetKey: "keyMap",
                 as: "timeTypeData",
             });
+
         }
     };
     Schedule.init({
