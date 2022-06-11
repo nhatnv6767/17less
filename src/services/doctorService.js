@@ -164,10 +164,18 @@ let getDetailDoctorById = (inputId) => {
 let bulkCreateSchedule = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let schedule = data.arrSchedule;
-            console.log("Bulk Create Schedule Data", schedule);
-            console.log("Bulk Create Schedule Data", typeof data);
-            resolve('');
+            if (!data.arrSchedule) {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Missing required parameters!!"
+                });
+            } else {
+                let schedule = data.arrSchedule;
+                console.log("Bulk Create Schedule Data", schedule);
+                console.log("Bulk Create Schedule Data", typeof data);
+                resolve('');
+            }
+
         } catch (e) {
             reject(e);
         }
