@@ -175,6 +175,7 @@ let bulkCreateSchedule = (data) => {
                     errMessage: "Missing required parameters!!"
                 });
             } else {
+                // data import
                 let schedule = data.arrSchedule;
                 if (schedule && schedule.length > 0) {
                     schedule = schedule.map(item => {
@@ -184,31 +185,7 @@ let bulkCreateSchedule = (data) => {
                 }
                 console.log("Bulk Create Schedule Data", schedule);
 
-                //  TO TEST
-
-                /** Bulk Create Schedule Data [
-                 {
-                        doctorId: 32,
-                        date: 1654959600000,
-                        timeType: 'T1',
-                        maxNumber: '10'
-                      },
-                 {
-                        doctorId: 32,
-                        date: 1654959600000,
-                        timeType: 'T2',
-                        maxNumber: '10'
-                      },
-                 {
-                        doctorId: 32,
-                        date: 1654959600000,
-                        timeType: 'T3',
-                        maxNumber: '10'
-                      }
-                 ]
-
-                 *
-                 * **/
+                // get all existing data
                 let existing = await db.Schedule.findAll({
                     where: {
                         doctorId: 32,
@@ -217,18 +194,24 @@ let bulkCreateSchedule = (data) => {
                     attributes: ['timeType', 'date', 'doctorId', 'maxNumber'],
                     raw: true,
                 });
+                // convert date
                 if (existing && existing.length > 0) {
                     existing = existing.map(item => {
                         item.date = new Date(item.date).getTime();
                         return item;
                     });
                 }
+                // compare different
                 let toCreate = _.differenceWith(schedule, existing, (a, b) => {
                     return a.timeType === b.timeType && a.date === b.date;
                 });
-                console.log("Check by Lodash Existing", toCreate);
 
-                // await db.Schedule.bulkCreate(schedule);
+                // create data
+                if (toCreate && toCreate.length > 0) {
+                    await db.Schedule.bulkCreate(toCreate);
+                }
+
+
                 resolve({
                     errCode: 0,
                     errMessage: "OK"
