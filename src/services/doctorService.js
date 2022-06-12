@@ -115,9 +115,8 @@ let saveDetailInforDoctor = (inputData) => {
                 let doctorInfor = await db.Doctor_Infor.findOne({
                     where: {
                         doctorId: inputData.doctorId,
-                        raw: false,
-                    }
-
+                    },
+                    raw: false,
                 });
 
                 if (doctorInfor) {
