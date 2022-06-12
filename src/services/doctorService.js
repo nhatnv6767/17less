@@ -183,6 +183,11 @@ let getDetailDoctorById = (inputId) => {
                             as: "genderData",
                             attributes: ["valueEn", "valueVi"],
                         },
+
+                        {
+                            model: db.Doctor_Infor,
+                            // attributes: ["description", "contentHTML", "contentMarkdown"],
+                        },
                     ],
                     raw: false,
                     nest: true,
