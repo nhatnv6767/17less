@@ -69,7 +69,14 @@ let saveDetailInforDoctor = (inputData) => {
                 !inputData.doctorId ||
                 !inputData.contentHTML ||
                 !inputData.contentMarkdown ||
-                !inputData.action
+                !inputData.action ||
+
+                !inputData.selectedPrice ||
+                !inputData.selectedPayment ||
+                !inputData.selectedProvince ||
+                !inputData.nameClinic ||
+                !inputData.addressClinic ||
+                !inputData.note
             ) {
                 resolve({
                     errCode: 1,
@@ -266,4 +273,3 @@ module.exports = {
 };
 
 
-/// Validate in Client
