@@ -131,6 +131,15 @@ let saveDetailInforDoctor = (inputData) => {
                     await doctorInfor.save();
                 } else {
                     // create
+
+                    await db.Doctor_Infor.create({
+                        priceId: inputData.selectedPrice,
+                        provinceId: inputData.selectedProvince,
+                        paymentId: inputData.selectedPayment,
+                        nameClinic: inputData.nameClinic,
+                        addressClinic: inputData.addressClinic,
+                        note: inputData.note,
+                    });
                 }
 
                 resolve({
