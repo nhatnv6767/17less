@@ -83,6 +83,8 @@ let saveDetailInforDoctor = (inputData) => {
                     errMessage: "Missing parameter",
                 });
             } else {
+
+                // UPSERT TO MARKDOWN
                 if (inputData.action === 'CREATE') {
                     await db.Markdown.create({
                         contentHTML: inputData.contentHTML,
@@ -106,6 +108,21 @@ let saveDetailInforDoctor = (inputData) => {
                         // doctorMarkdown.updatedAt = new Date();
                         await doctorMarkdown.save();
                     }
+                }
+
+                // UPSERT TO DOCTOR_INFOR TABLE
+
+                let doctorInfor = await db.Doctor_Infor.findOne({
+                    where: {
+                        doctorId: inputData.doctorId,
+                    }
+
+                });
+
+                if (doctorInfor) {
+                    // update
+                } else {
+                    // create
                 }
 
                 resolve({
