@@ -105,7 +105,7 @@ let saveDetailInforDoctor = (inputData) => {
                         doctorMarkdown.contentHTML = inputData.contentHTML;
                         doctorMarkdown.contentMarkdown = inputData.contentMarkdown;
                         doctorMarkdown.description = inputData.description;
-                        // doctorMarkdown.updatedAt = new Date();
+                        doctorMarkdown.updatedAt = new Date();
                         await doctorMarkdown.save();
                     }
                 }
@@ -115,12 +115,20 @@ let saveDetailInforDoctor = (inputData) => {
                 let doctorInfor = await db.Doctor_Infor.findOne({
                     where: {
                         doctorId: inputData.doctorId,
+                        raw: false,
                     }
 
                 });
 
                 if (doctorInfor) {
                     // update
+                    doctorInfor.priceId = inputData.selectedPrice;
+                    doctorInfor.provinceId = inputData.selectedProvince;
+                    doctorInfor.paymentId = inputData.selectedPayment;
+                    doctorInfor.nameClinic = inputData.nameClinic;
+                    doctorInfor.addressClinic = inputData.addressClinic;
+                    doctorInfor.note = inputData.note;
+                    await doctorInfor.save();
                 } else {
                     // create
                 }
