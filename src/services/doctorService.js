@@ -121,6 +121,7 @@ let saveDetailInforDoctor = (inputData) => {
 
                 if (doctorInfor) {
                     // update
+                    doctorInfor.doctorId = inputData.doctorId;
                     doctorInfor.priceId = inputData.selectedPrice;
                     doctorInfor.provinceId = inputData.selectedProvince;
                     doctorInfor.paymentId = inputData.selectedPayment;
@@ -132,6 +133,7 @@ let saveDetailInforDoctor = (inputData) => {
                     // create
 
                     await db.Doctor_Infor.create({
+                        doctorId: inputData.doctorId,
                         priceId: inputData.selectedPrice,
                         provinceId: inputData.selectedProvince,
                         paymentId: inputData.selectedPayment,
