@@ -324,16 +324,48 @@ let getScheduleDoctorByDate = (doctorId, date) => {
     });
 };
 
-let getExtraInforDoctorById = (doctorId) => {
+let getExtraInforDoctorById = (idInput) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!doctorId) {
+            if (!idInput) {
                 resolve({
                     errCode: 1,
                     errMessage: "Missing required parameters"
                 });
             } else {
-                
+                // findAll -> Arr; findOne -> Object
+                let data = await db.Doctor_Infor.findOne({
+                    where: {
+                        doctorId: idInput
+                    },
+                    attributes: {
+                        exclude: ["id", "doctorId"],
+                    },
+                    include: [
+                        {
+                            model: db.Allcode,
+                            as: "priceData",
+                            attributes: ["valueEn", "valueVi"],
+                        },
+                        {
+                            model: db.Allcode,
+                            as: "provinceData",
+                            attributes: ["valueEn", "valueVi"],
+                        },
+                        {
+                            model: db.Allcode,
+                            as: "paymentData",
+                            attributes: ["valueEn", "valueVi"],
+                        },
+                    ],
+                    raw: false,
+                    nest: true,
+                });
+                if (!data) data = [];
+                resolve({
+                    errCode: 0,
+                    data: data,
+                });
             }
         } catch (e) {
             reject(e);
