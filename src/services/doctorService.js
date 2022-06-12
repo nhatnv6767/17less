@@ -186,7 +186,10 @@ let getDetailDoctorById = (inputId) => {
 
                         {
                             model: db.Doctor_Infor,
-                            // attributes: ["description", "contentHTML", "contentMarkdown"],
+                            attributes: {
+                                exclude: ["id", "doctorId"],
+                            },
+
                         },
                     ],
                     raw: false,
