@@ -373,6 +373,16 @@ let getExtraInforDoctorById = (idInput) => {
     });
 };
 
+let getProfileDoctorById = (inputId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getAllDoctors: getAllDoctors,
@@ -381,6 +391,7 @@ module.exports = {
     bulkCreateSchedule: bulkCreateSchedule,
     getScheduleDoctorByDate: getScheduleDoctorByDate,
     getExtraInforDoctorById: getExtraInforDoctorById,
+    getProfileDoctorById: getProfileDoctorById,
 };
 
 
