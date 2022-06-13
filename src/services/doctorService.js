@@ -373,10 +373,17 @@ let getExtraInforDoctorById = (idInput) => {
     });
 };
 
-let getProfileDoctorById = (inputId) => {
+let getProfileDoctorById = (doctorId) => {
     return new Promise(async (resolve, reject) => {
         try {
-            
+            if (!doctorId) {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Missing required parameters"
+                });
+            } else {
+
+            }
         } catch (e) {
             reject(e);
         }
