@@ -26,8 +26,14 @@ let postBookAppointment = (data) => {
 
                 console.log("Check user: ", user[0]);
                 // create a booking record
-                if (user) {
-                    // await db.
+                if (user && user[0]) {
+                    await db.Booking.create({
+                        statusId: 'S1',
+                        doctorId: doctorId,
+                        patientId: user[0].id,
+                        date: data.date,
+                        timeType: data.timeType
+                    });
                 }
 
                 resolve({
