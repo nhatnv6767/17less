@@ -6,7 +6,7 @@ require('dotenv').config();
 let postBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!data.email) {
+            if (!data.email || !data.doctorId || !data.timeType || !data.date) {
                 resolve({
                     errCode: 1,
                     errMessage: "Missing required parameters"
@@ -38,7 +38,7 @@ let postBookAppointment = (data) => {
 
                 resolve({
                     errCode: 0,
-                    errMessage: "OK",
+                    errMessage: "Save infor patient successfully",
                 });
             }
 
