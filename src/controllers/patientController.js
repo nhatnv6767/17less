@@ -12,6 +12,6 @@ let postBookAppointment = async (req, res) => {
     }
 };
 
-Module.exports = {
+module.exports = {
     postBookAppointment: postBookAppointment
 };
