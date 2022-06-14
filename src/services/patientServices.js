@@ -18,7 +18,7 @@ let postBookAppointment = (data) => {
                         email: data.email
                     },
                     // if dont have email
-                    default: {
+                    defaults: {
                         email: data.email,
                         roleId: 'R3'
                     }
