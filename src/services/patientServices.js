@@ -21,13 +21,18 @@ let postBookAppointment = (data) => {
                     defaults: {
                         email: data.email,
                         roleId: 'R3'
-                    }
+                    },
                 });
+
+                console.log("Check user: ", user[0]);
+                // create a booking record
+                if (user) {
+                    // await db.
+                }
 
                 resolve({
                     errCode: 0,
                     errMessage: "OK",
-                    data: user,
                 });
             }
 
