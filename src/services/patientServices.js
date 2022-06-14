@@ -24,7 +24,6 @@ let postBookAppointment = (data) => {
                     },
                 });
 
-                console.log("Check user: ", user[0]);
                 // create a booking record
                 if (user && user[0]) {
                     await db.Booking.findOrCreate({
