@@ -29,7 +29,7 @@ let postBookAppointment = (data) => {
                 if (user && user[0]) {
                     await db.Booking.create({
                         statusId: 'S1',
-                        doctorId: doctorId,
+                        doctorId: data.doctorId,
                         patientId: user[0].id,
                         date: data.date,
                         timeType: data.timeType
