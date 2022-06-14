@@ -1,8 +1,8 @@
-import doctorService from "../services/doctorService";
+import patientServices from "../services/patientServices";
 
 let postBookAppointment = async (req, res) => {
     try {
-        let infor = await doctorService.getProfileDoctorById(req.body);
+        let infor = await patientServices.postBookAppointment(req.body);
         return res.status(200).json(infor);
     } catch (e) {
         console.log(e);
