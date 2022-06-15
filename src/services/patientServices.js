@@ -18,7 +18,8 @@ let postBookAppointment = (data) => {
                     receiverEmail: data.email,
                     patientName: data.fullName,
                     time: data.timeString,
-                    doctorName: "Cẩu Tạp Chủng",
+                    doctorName: data.doctorName,
+                    language: data.language,
                     redirectLink: "https://nodemailer.com/"
                 });
 
