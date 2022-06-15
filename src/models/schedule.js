@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
                 as: "timeTypeData",
             });
 
+            // 1 thằng schedule có nhiều thằng doctorId
+            Schedule.hasMany(models.User, {foreignKey: "doctorId", as: "doctorData"});
+
         }
     };
     Schedule.init({
