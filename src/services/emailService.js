@@ -19,7 +19,7 @@ let sendSimpleEmail = async (dataSend) => {
         to: dataSend.receiverEmail, // list of receivers
         subject: "Thông tin đặt lịch khám bệnh ✔", // Subject line
         // text: "Hello world?", // plain text body
-        html: getBodyHTMLEmail(dataSend.language),
+        html: getBodyHTMLEmail(dataSend),
     });
 };
 
@@ -51,7 +51,7 @@ let getBodyHTMLEmail = (dataSend) => {
             `;
     }
 
-    if (language === "en") {
+    if (dataSend.language === "en") {
         result =
             `
                 <h3>Dear ${dataSend.patientName}!</h3>
