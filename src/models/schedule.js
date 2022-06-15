@@ -18,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
             });
 
             // 1 thằng schedule có nhiều thằng doctorId
-            Schedule.hasMany(models.User, {foreignKey: "doctorId", as: "doctorData"});
+            Schedule.belongsTo(models.User, {
+                    foreignKey: "doctorId",
+                    targetKey: "id",
+                    as: "doctorData"
+                }
+            );
 
         }
     };
