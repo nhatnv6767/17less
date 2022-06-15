@@ -14,6 +14,12 @@ let postBookAppointment = (data) => {
                 });
             } else {
 
+                resolve({
+                    data
+                })
+
+                return;
+
                 await emailService.sendSimpleEmail({
                     receiverEmail: data.email,
                     patientName: data.fullName,
