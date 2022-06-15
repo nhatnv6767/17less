@@ -15,7 +15,11 @@ let postBookAppointment = (data) => {
             } else {
 
                 await emailService.sendSimpleEmail({
-                    receiverEmail: data.email
+                    receiverEmail: data.email,
+                    patientName: "Trương Vô Kỵ",
+                    time: "8:00 - 9:00 Chủ Nhật 03/02/2022",
+                    doctorName: "Cẩu Tạp Chủng",
+                    redirectLink: "https://nodemailer.com/"
                 });
 
                 // upsert patient
