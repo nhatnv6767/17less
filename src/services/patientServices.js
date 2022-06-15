@@ -2,7 +2,7 @@ import db from "../models/index";
 import _ from "lodash";
 
 require('dotenv').config();
-import emailService from "./emailService"
+import emailService from "./emailService";
 
 let postBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
@@ -14,7 +14,9 @@ let postBookAppointment = (data) => {
                 });
             } else {
 
-                await emailService.sendSimpleEmail(data.email)
+                await emailService.sendSimpleEmail({
+                    receiverEmail: data.email
+                });
 
                 // upsert patient
                 let user = await db.User.findOrCreate({
