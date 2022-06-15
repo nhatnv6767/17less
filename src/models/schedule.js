@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
             });
 
             // 1 thằng schedule có nhiều thằng doctorId
+            // foreignKey nằm trên chính nó
+            // targetKey: map với trường nào bên table kia
             Schedule.belongsTo(models.User, {
                     foreignKey: "doctorId",
                     targetKey: "id",
