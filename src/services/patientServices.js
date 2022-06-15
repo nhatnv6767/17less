@@ -7,7 +7,7 @@ import emailService from "./emailService";
 let postBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!data.email || !data.doctorId || !data.timeType || !data.date) {
+            if (!data.email || !data.doctorId || !data.timeType || !data.date || !data.fullName) {
                 resolve({
                     errCode: 1,
                     errMessage: "Missing required parameters"
@@ -16,7 +16,7 @@ let postBookAppointment = (data) => {
 
                 await emailService.sendSimpleEmail({
                     receiverEmail: data.email,
-                    patientName: "Trương Vô Kỵ",
+                    patientName: data.fullName,
                     time: "8:00 - 9:00 Chủ Nhật 03/02/2022",
                     doctorName: "Cẩu Tạp Chủng",
                     redirectLink: "https://nodemailer.com/"
