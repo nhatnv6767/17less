@@ -89,7 +89,7 @@ let postVerifyBookAppointment = (data) => {
                         token: data.token,
                         statusId: "S1"
                     },
-                    // to use update func
+                    // to use update func - object of sequelize
                     raw: false,
                 });
 
