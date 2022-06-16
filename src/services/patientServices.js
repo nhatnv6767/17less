@@ -6,12 +6,10 @@ import emailService from "./emailService";
 import {v4 as uuidv4} from 'uuid';
 
 
-let buildUrlEmail = (doctorId) => {
-    let result = "";
-    let id = uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+let buildUrlEmail = (doctorId, token) => {
+    let result =
+        `${process.env.URL_REACT}/verify-booking?token=${token}&doctorId=${doctorId}`;
 
-    result =
-        `${process.env.URL_REACT}/verify-booking?token=${id}&doctorId=${doctorId}`;
     return result;
 };
 let postBookAppointment = (data) => {
@@ -24,13 +22,14 @@ let postBookAppointment = (data) => {
                 });
             } else {
 
+                let token = uuidv4();
                 await emailService.sendSimpleEmail({
                     receiverEmail: data.email,
                     patientName: data.fullName,
                     time: data.timeString,
                     doctorName: data.doctorName,
                     language: data.language,
-                    redirectLink: buildUrlEmail(data.doctorId)
+                    redirectLink: buildUrlEmail(data.doctorId, token)
                 });
 
                 // upsert patient
@@ -56,7 +55,8 @@ let postBookAppointment = (data) => {
                             doctorId: data.doctorId,
                             patientId: user[0].id,
                             date: data.date,
-                            timeType: data.timeType
+                            timeType: data.timeType,
+                            token: token,
                         },
 
                     });
