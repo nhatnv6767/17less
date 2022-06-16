@@ -77,11 +77,24 @@ let postBookAppointment = (data) => {
 let postVerifyBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-
+            if (!data.token || !data.doctorId) {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Missing required parameters"
+                });
+            } else {
+                let appointment = await db.Booking.findOne({
+                    where: {
+                        doctorId: data.doctorId,
+                        token: data.token,
+                        statusId: "S1"
+                    }
+                });
+            }
         } catch (e) {
             reject(e);
         }
-    })
+    });
 };
 
 module.exports = {
