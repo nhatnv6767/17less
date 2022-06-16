@@ -88,8 +88,25 @@ let postVerifyBookAppointment = (data) => {
                         doctorId: data.doctorId,
                         token: data.token,
                         statusId: "S1"
-                    }
+                    },
+                    // to use update func
+                    raw: false,
                 });
+
+                if (appointment) {
+                    await appointment.save({
+                        statusId: "S2",
+                    });
+                    resolve({
+                        errCode: 0,
+                        errMessage: "Update the appointment successfully"
+                    });
+                } else {
+                    resolve({
+                        errCode: 2,
+                        errMessage: "Appointment has been activated or does not exist"
+                    });
+                }
             }
         } catch (e) {
             reject(e);
