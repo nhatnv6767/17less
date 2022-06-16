@@ -74,6 +74,17 @@ let postBookAppointment = (data) => {
     });
 };
 
+let postVerifyBookAppointment = (data) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+        } catch (e) {
+            reject(e);
+        }
+    })
+};
+
 module.exports = {
     postBookAppointment: postBookAppointment,
+    postVerifyBookAppointment: postVerifyBookAppointment,
 };
