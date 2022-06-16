@@ -6,12 +6,12 @@ import emailService from "./emailService";
 import {v4 as uuidv4} from 'uuid';
 
 
-let buildUrlEmail = (doctorId, patientId) => {
+let buildUrlEmail = (doctorId) => {
     let result = "";
     let id = uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 
     result =
-        `${process.env.URL_REACT}/verify-booking?token=${id}&doctorId=${doctorId}&patientId=${patientId}`;
+        `${process.env.URL_REACT}/verify-booking?token=${id}&doctorId=${doctorId}`;
     return result;
 };
 let postBookAppointment = (data) => {
@@ -30,7 +30,7 @@ let postBookAppointment = (data) => {
                     time: data.timeString,
                     doctorName: data.doctorName,
                     language: data.language,
-                    redirectLink: "https://nodemailer.com/"
+                    redirectLink: buildUrlEmail(data.doctorId)
                 });
 
                 // upsert patient
