@@ -27,5 +27,5 @@ let createSpecialty = (data) => {
 };
 
 module.exports = {
-    createSpecialty: createSpecialty()
+    createSpecialty: createSpecialty
 };
