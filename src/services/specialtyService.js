@@ -1,3 +1,5 @@
+import db from "../models/index";
+
 let createSpecialty = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
@@ -7,8 +9,17 @@ let createSpecialty = (data) => {
                     errMessage: "Missing required parameters"
                 });
             } else {
-                
+                await db.Specialty.create({
+                    name: data.name,
+                    image: data.imageBase64,
+                    descriptionHTML: data.descriptionHTML,
+                    descriptionMarkdown: data.descriptionMarkdown
+                });
             }
+            resolve({
+                errCode: 0,
+                errMessage: "OK"
+            });
         } catch (e) {
             reject(e);
         }
