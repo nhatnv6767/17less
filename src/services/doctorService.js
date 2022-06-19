@@ -76,7 +76,7 @@ let checkRequiredFields = (inputData) => {
         }
     }
     return {
-        isValid: isvalid,
+        isValid: isValid,
         element: element,
     };
 };
