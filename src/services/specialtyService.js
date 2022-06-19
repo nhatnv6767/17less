@@ -29,7 +29,12 @@ let createSpecialty = (data) => {
 let getAllSpecialty = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            
+            let data = await db.Specialty.findAll();
+            resolve({
+                errCode: 0,
+                errMessage: "OK",
+                data,
+            });
         } catch (e) {
             reject(e);
         }
