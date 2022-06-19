@@ -26,6 +26,17 @@ let createSpecialty = (data) => {
     });
 };
 
+let getAllSpecialty = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 module.exports = {
-    createSpecialty: createSpecialty
+    createSpecialty: createSpecialty,
+    getAllSpecialty: getAllSpecialty,
 };
