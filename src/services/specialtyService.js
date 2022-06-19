@@ -29,7 +29,14 @@ let createSpecialty = (data) => {
 let getAllSpecialty = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let data = await db.Specialty.findAll();
+            let data = await db.Specialty.findAll({
+                attributes: {
+                    exclude: ["image"]
+                }
+            });
+            if (data && data.length > 0) {
+                console.log("Check data get all specialty", data);
+            }
             resolve({
                 errCode: 0,
                 errMessage: "OK",
