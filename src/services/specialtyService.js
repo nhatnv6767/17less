@@ -29,13 +29,12 @@ let createSpecialty = (data) => {
 let getAllSpecialty = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            let data = await db.Specialty.findAll({
-                attributes: {
-                    exclude: ["image"]
-                }
-            });
+            let data = await db.Specialty.findAll();
             if (data && data.length > 0) {
-                console.log("Check data get all specialty", data);
+                data.map(item => {
+                    item.image = new Buffer(item.image, "base64").toString("binary");
+                    return item;
+                });
             }
             resolve({
                 errCode: 0,
