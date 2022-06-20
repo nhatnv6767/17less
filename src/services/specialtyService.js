@@ -47,7 +47,18 @@ let getAllSpecialty = () => {
     });
 };
 
+let getDetailSpecialtyById = (inputId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
 module.exports = {
     createSpecialty: createSpecialty,
     getAllSpecialty: getAllSpecialty,
+    getDetailSpecialtyById: getDetailSpecialtyById,
 };
