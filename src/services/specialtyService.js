@@ -80,6 +80,8 @@ let getDetailSpecialtyById = (inputId, location) => {
                         errMessage: "Ok",
                         data
                     });
+                } else {
+                    // find doctor by location
                 }
 
 
