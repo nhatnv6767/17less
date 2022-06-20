@@ -56,7 +56,23 @@ let getDetailSpecialtyById = (inputId) => {
                     errMessage: "Missing required parameters"
                 });
             } else {
-                
+                let data = await db.Specialty.findOne({
+                    where: {
+                        id: inputId
+                    },
+                    attributes: ["descriptionHTML", "descriptionMarkdown"],
+                });
+                if (data) {
+                    // do sthing
+                } else {
+                    data = {};
+                }
+
+                resolve({
+                    errCode: 0,
+                    errMessage: "Ok",
+                    data
+                });
             }
         } catch (e) {
             reject(e);
