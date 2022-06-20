@@ -66,10 +66,11 @@ let getDetailSpecialtyById = (inputId, location) => {
                     });
 
                     if (data) {
-                        let arrDoctorId = [];
                         let doctorSpecialty = await db.Doctor_Infor.findAll({
-                            where: {specialtyId: inputId}
+                            where: {specialtyId: inputId},
+                            attributes: ["doctorId", "provinceId"]
                         });
+                        data.doctorSpecialty = doctorSpecialty;
                     } else {
                         data = {};
                     }
@@ -80,7 +81,7 @@ let getDetailSpecialtyById = (inputId, location) => {
                         data
                     });
                 }
-                
+
 
             }
         } catch (e) {
