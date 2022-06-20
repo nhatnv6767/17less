@@ -47,35 +47,41 @@ let getAllSpecialty = () => {
     });
 };
 
-let getDetailSpecialtyById = (inputId) => {
+let getDetailSpecialtyById = (inputId, location) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!inputId) {
+            if (!inputId || !location) {
                 resolve({
                     errCode: 1,
                     errMessage: "Missing required parameters"
                 });
             } else {
-                let data = await db.Specialty.findOne({
-                    where: {
-                        id: inputId
-                    },
-                    attributes: ["descriptionHTML", "descriptionMarkdown"],
-                });
-                if (data) {
-                    let arrDoctorId = [];
-                    let doctorSpecialty = await db.Doctor_Infor.findAll({
-                        where: {specialtyId: inputId}
+                let data = {};
+                if (location === "ALL") {
+                    data = await db.Specialty.findOne({
+                        where: {
+                            id: inputId
+                        },
+                        attributes: ["descriptionHTML", "descriptionMarkdown"],
                     });
-                } else {
-                    data = {};
-                }
 
-                resolve({
-                    errCode: 0,
-                    errMessage: "Ok",
-                    data
-                });
+                    if (data) {
+                        let arrDoctorId = [];
+                        let doctorSpecialty = await db.Doctor_Infor.findAll({
+                            where: {specialtyId: inputId}
+                        });
+                    } else {
+                        data = {};
+                    }
+
+                    resolve({
+                        errCode: 0,
+                        errMessage: "Ok",
+                        data
+                    });
+                }
+                
+
             }
         } catch (e) {
             reject(e);
