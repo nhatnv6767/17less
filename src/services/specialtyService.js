@@ -56,34 +56,41 @@ let getDetailSpecialtyById = (inputId, location) => {
                     errMessage: "Missing required parameters"
                 });
             } else {
-                let data = {};
-                if (location === "ALL") {
-                    data = await db.Specialty.findOne({
-                        where: {
-                            id: inputId
-                        },
-                        attributes: ["descriptionHTML", "descriptionMarkdown"],
-                    });
+                let data = await db.Specialty.findOne({
+                    where: {
+                        id: inputId
+                    },
+                    attributes: ["descriptionHTML", "descriptionMarkdown"],
+                });
 
-                    if (data) {
-                        let doctorSpecialty = await db.Doctor_Infor.findAll({
+                if (data) {
+                    let doctorSpecialty = []
+                    if (location === "ALL") {
+                        doctorSpecialty = await db.Doctor_Infor.findAll({
                             where: {specialtyId: inputId},
                             attributes: ["doctorId", "provinceId"]
                         });
-                        data.doctorSpecialty = doctorSpecialty;
                     } else {
-                        data = {};
+                        // find by location
+                        doctorSpecialty = await db.Doctor_Infor.findAll({
+                            where: {
+                                specialtyId: inputId,
+                                provinceId: location
+                            },
+                            attributes: ["doctorId", "provinceId"]
+                        });
                     }
 
-                    resolve({
-                        errCode: 0,
-                        errMessage: "Ok",
-                        data
-                    });
+                    data.doctorSpecialty = doctorSpecialty;
                 } else {
-                    // find doctor by location
+                    data = {};
                 }
 
+                resolve({
+                    errCode: 0,
+                    errMessage: "Ok",
+                    data
+                });
 
             }
         } catch (e) {
