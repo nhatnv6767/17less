@@ -28,6 +28,17 @@ let createClinic = (data) => {
     });
 };
 
+let getAllClinic = () => {
+
+};
+
+let getDetailClinicById = () => {
+    
+};
+
+
 module.exports = {
     createClinic: createClinic,
+    getAllClinic: getAllClinic,
+    getDetailClinicById: getDetailClinicById,
 };
