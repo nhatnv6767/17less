@@ -489,7 +489,16 @@ let getListPatientForDoctor = (doctorId, date) => {
                         statusId: 'S2',
                         doctorId: doctorId,
                         date: date
-                    }
+                    },
+                    include: [
+
+                        {
+                            model: db.Markdown,
+                            attributes: ["description", "contentHTML", "contentMarkdown"],
+                        },
+                    ],
+                    raw: false,
+                    nest: true,
                 });
 
                 resolve({
