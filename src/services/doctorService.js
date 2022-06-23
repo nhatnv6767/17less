@@ -484,7 +484,18 @@ let getListPatientForDoctor = (doctorId, date) => {
                     errMessage: "Missing required parameters"
                 });
             } else {
+                let data = await db.Booking.findAll({
+                    where: {
+                        statusId: 'S2',
+                        doctorId: doctorId,
+                        date: date
+                    }
+                });
 
+                resolve({
+                    errCode: 0,
+                    data: data,
+                });
             }
         } catch (e) {
             reject(e);
