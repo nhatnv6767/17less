@@ -493,8 +493,8 @@ let getListPatientForDoctor = (doctorId, date) => {
                     include: [
 
                         {
-                            model: db.Markdown,
-                            attributes: ["description", "contentHTML", "contentMarkdown"],
+                            model: db.User,
+                            attributes: ["email", "firstName", "address", "gender"],
                         },
                     ],
                     raw: false,
