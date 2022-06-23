@@ -475,15 +475,22 @@ let getProfileDoctorById = (inputId) => {
     });
 };
 
-let getListPatientForDoctor = (inputId, inputDate) {
+let getListPatientForDoctor = (doctorId, date) => {
     return new Promise(async (resolve, reject) => {
         try {
+            if (!doctorId || !date) {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Missing required parameters"
+                });
+            } else {
 
+            }
         } catch (e) {
             reject(e);
         }
-    })
-}
+    });
+};
 
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
