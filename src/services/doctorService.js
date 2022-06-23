@@ -475,6 +475,16 @@ let getProfileDoctorById = (inputId) => {
     });
 };
 
+let getListPatientForDoctor = (inputId, inputDate) {
+    return new Promise(async (resolve, reject) => {
+        try {
+
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
 module.exports = {
     getTopDoctorHome: getTopDoctorHome,
     getAllDoctors: getAllDoctors,
@@ -484,6 +494,7 @@ module.exports = {
     getScheduleDoctorByDate: getScheduleDoctorByDate,
     getExtraInforDoctorById: getExtraInforDoctorById,
     getProfileDoctorById: getProfileDoctorById,
+    getListPatientForDoctor: getListPatientForDoctor,
 };
 
 
