@@ -29,11 +29,23 @@ let createClinic = (data) => {
 };
 
 let getAllClinic = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
 
+        } catch (e) {
+            reject(e);
+        }
+    });
 };
 
 let getDetailClinicById = () => {
-    
+    return new Promise(async (resolve, reject) => {
+        try {
+
+        } catch (e) {
+            reject(e);
+        }
+    });
 };
 
 
