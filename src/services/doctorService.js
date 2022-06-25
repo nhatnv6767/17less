@@ -1,5 +1,6 @@
 import db from "../models/index";
 import _ from "lodash";
+import emailService from "../services/emailService";
 
 require('dotenv').config();
 
@@ -554,11 +555,11 @@ let sendRemedy = (data) => {
                 }
 
                 // send email remedy
+                await emailService.sendAttachment(data);
 
                 resolve({
                     errCode: 0,
                     errMessage: "OK",
-                    data: data,
                 });
             }
         } catch (e) {
