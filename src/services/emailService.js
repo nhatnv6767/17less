@@ -102,15 +102,13 @@ let sendAttachment = (dataSend) => {
                 html: getBodyHTMLEmailRemedy(dataSend),
                 attachments: [
                     {   // encoded string as an attachment
-                        filename: 'Information.png',
+                        filename: `remedy-${dataSend.patientId}-${new Date().getTime()}.png`,
                         content: dataSend.imgBase64.split("base64")[1],
                         // search: node js send image base64 as attachment
                         encoding: 'base64', //
                     },
                 ],
             });
-            console.log("Check infor send email: ");
-            console.log(info);
             resolve();
         } catch (e) {
             reject(e);
@@ -124,7 +122,7 @@ let getBodyHTMLEmailRemedy = (dataSend) => {
     if (dataSend.language === "vi") {
         result =
             `
-                <h3>Xin chào ....!</h3>
+                <h3>Xin chào ${dataSend.patientName}!</h3>
                 <p>Bạn nhận được email này vì đã đặt lịch khám bệnh online Take care your health thành công</p>
                 <p>Thông tin đơn thuốc/hoá đơn được gửi trong file đính kèm. </p>
                 
@@ -138,7 +136,7 @@ let getBodyHTMLEmailRemedy = (dataSend) => {
     if (dataSend.language === "en") {
         result =
             `
-                <h3>Dear ....!</h3>
+                <h3>Dear ${dataSend.patientName}!</h3>
                 <p>You received this email because you made an online appointment with Take care your health succ
                 </p>
                 <p>Attachment </p>
