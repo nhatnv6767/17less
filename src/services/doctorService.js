@@ -529,7 +529,18 @@ let getListPatientForDoctor = (doctorId, date) => {
 let sendRemedy = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            
+            if (!data.email || !data.imgBase64) {
+                resolve({
+                    errCode: 1,
+                    errMessage: "Missing required parameters!!"
+                });
+            } else {
+
+                resolve({
+                    errCode: 0,
+                    errMessage: "OK"
+                });
+            }
         } catch (e) {
             reject(e);
         }
