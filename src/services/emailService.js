@@ -113,21 +113,10 @@ let getBodyHTMLEmailRemedy = (dataSend) => {
     if (dataSend.language === "vi") {
         result =
             `
-                <h3>Xin chào ${dataSend.patientName}!</h3>
-                <p>Bạn nhận được email này vì đã đặt lịch khám bệnh online Take care your health</p>
-                <p>Thông tin đặt lịch khám bệnh: </p>
-                <div>
-                    <b>Thời gian: ${dataSend.time}</b>
-                </div>
-                <div>
-                    <b>Bác sĩ: ${dataSend.doctorName}</b>
-                </div>
-                <p>Nếu các thông tin trên là chính xác, vui lòng nhấn vào đường link bên dưới để xác nhận
-                    và hoàn tất thủ tục đặt lịch khám bệnh.
-                </p>
-                <div>
-                    <a href=${dataSend.redirectLink} target="_blank">Nhấn vào đây</a>
-                </div>
+                <h3>Xin chào ....!</h3>
+                <p>Bạn nhận được email này vì đã đặt lịch khám bệnh online Take care your health thành công</p>
+                <p>Thông tin đơn thuốc/hoá đơn được gửi trong file đính kèm. </p>
+                
                 <div>
                     Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của chúng tôi.
                 </div>
@@ -138,21 +127,11 @@ let getBodyHTMLEmailRemedy = (dataSend) => {
     if (dataSend.language === "en") {
         result =
             `
-                <h3>Dear ${dataSend.patientName}!</h3>
-                <p>You received this email because you made an online appointment with Take care your health</p>
-                <p>Information to book a medical appointment: </p>
-                <div>
-                    <b>Duration: ${dataSend.time}</b>
-                </div>
-                <div>
-                    <b>Doctor: ${dataSend.doctorName}</b>
-                </div>
-                <p>If the above information is correct, please click the link below to confirm
-                     and complete the medical appointment booking process.
+                <h3>Dear ....!</h3>
+                <p>You received this email because you made an online appointment with Take care your health succ
                 </p>
-                <div>
-                    <a href=${dataSend.redirectLink} target="_blank">Click here</a>
-                </div>
+                <p>Attachment </p>
+                
                 <div>
                     Thank you for trusting and using our service.
                 </div>
@@ -164,5 +143,6 @@ let getBodyHTMLEmailRemedy = (dataSend) => {
 };
 
 module.exports = {
-    sendSimpleEmail: sendSimpleEmail
+    sendSimpleEmail: sendSimpleEmail,
+    sendAttachment: sendAttachment,
 };
