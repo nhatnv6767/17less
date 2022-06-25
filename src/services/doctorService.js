@@ -546,18 +546,19 @@ let sendRemedy = (data) => {
                     },
                     raw: false,
 
-                })
+                });
 
                 if (appointment) {
-                    appointment.statusId = "S3"
-                    await appointment.save()
+                    appointment.statusId = "S3";
+                    await appointment.save();
                 }
 
                 // send email remedy
 
                 resolve({
                     errCode: 0,
-                    errMessage: "OK"
+                    errMessage: "OK",
+                    data: data,
                 });
             }
         } catch (e) {
