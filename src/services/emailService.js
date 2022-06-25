@@ -102,9 +102,10 @@ let sendAttachment = (dataSend) => {
                 html: getBodyHTMLEmailRemedy(dataSend),
                 attachments: [
                     {   // encoded string as an attachment
-                        filename: 'text1.png',
-                        content: 'aGVsbG8gd29ybGQh',
-                        encoding: dataSend.imgBase64, //
+                        filename: 'Information.png',
+                        content: dataSend.imgBase64.split("base64")[1],
+                        // search: node js send image base64 as attachment
+                        encoding: 'base64', //
                     },
                 ],
             });
