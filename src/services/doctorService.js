@@ -555,6 +555,7 @@ let sendRemedy = (data) => {
                 }
 
                 // send email remedy
+                console.log("Check server: ", data);
                 await emailService.sendAttachment(data);
 
                 resolve({
