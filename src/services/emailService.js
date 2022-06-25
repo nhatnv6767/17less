@@ -97,8 +97,64 @@ let sendAttachment = async (dataSend) => {
         to: dataSend.receiverEmail, // list of receivers
         subject: "Kết quả đặt lịch khám bệnh ✔", // Subject line
         // text: "Hello world?", // plain text body
-        html: getBodyHTMLEmail(dataSend),
+        html: getBodyHTMLEmailRemedy(dataSend),
+        attachments: attachments,
     });
+};
+
+let getBodyHTMLEmailRemedy = (dataSend) => {
+    let result = "";
+    if (dataSend.language === "vi") {
+        result =
+            `
+                <h3>Xin chào ${dataSend.patientName}!</h3>
+                <p>Bạn nhận được email này vì đã đặt lịch khám bệnh online Take care your health</p>
+                <p>Thông tin đặt lịch khám bệnh: </p>
+                <div>
+                    <b>Thời gian: ${dataSend.time}</b>
+                </div>
+                <div>
+                    <b>Bác sĩ: ${dataSend.doctorName}</b>
+                </div>
+                <p>Nếu các thông tin trên là chính xác, vui lòng nhấn vào đường link bên dưới để xác nhận
+                    và hoàn tất thủ tục đặt lịch khám bệnh.
+                </p>
+                <div>
+                    <a href=${dataSend.redirectLink} target="_blank">Nhấn vào đây</a>
+                </div>
+                <div>
+                    Cảm ơn bạn đã tin tưởng và sử dụng dịch vụ của chúng tôi.
+                </div>
+        
+            `;
+    }
+
+    if (dataSend.language === "en") {
+        result =
+            `
+                <h3>Dear ${dataSend.patientName}!</h3>
+                <p>You received this email because you made an online appointment with Take care your health</p>
+                <p>Information to book a medical appointment: </p>
+                <div>
+                    <b>Duration: ${dataSend.time}</b>
+                </div>
+                <div>
+                    <b>Doctor: ${dataSend.doctorName}</b>
+                </div>
+                <p>If the above information is correct, please click the link below to confirm
+                     and complete the medical appointment booking process.
+                </p>
+                <div>
+                    <a href=${dataSend.redirectLink} target="_blank">Click here</a>
+                </div>
+                <div>
+                    Thank you for trusting and using our service.
+                </div>
+        
+            `;
+    }
+
+    return result;
 };
 
 module.exports = {
