@@ -79,33 +79,43 @@ let getBodyHTMLEmail = (dataSend) => {
     return result;
 };
 
-let sendAttachment = async (dataSend) => {
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-            user: process.env.EMAIL_APP, // generated ethereal user
-            pass: process.env.EMAIL_APP_PASSWORD, // generated ethereal password
-        },
+let sendAttachment = (dataSend) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            // create reusable transporter object using the default SMTP transport
+            let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                auth: {
+                    user: process.env.EMAIL_APP, // generated ethereal user
+                    pass: process.env.EMAIL_APP_PASSWORD, // generated ethereal password
+                },
+            });
+
+            // send mail with defined transport object
+            let info = await transporter.sendMail({
+                from: '"Fred Foo 👻" <dangtphuong0000@gmail.com>', // sender address
+                to: dataSend.email, // list of receivers
+                subject: "Kết quả đặt lịch khám bệnh ✔", // Subject line
+                // text: "Hello world?", // plain text body
+                html: getBodyHTMLEmailRemedy(dataSend),
+                attachments: [
+                    {   // encoded string as an attachment
+                        filename: 'text1.png',
+                        content: 'aGVsbG8gd29ybGQh',
+                        encoding: dataSend.imgBase64, //
+                    },
+                ],
+            });
+            console.log("Check infor send email: ");
+            console.log(info);
+            resolve();
+        } catch (e) {
+            reject(e);
+        }
     });
 
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <dangtphuong0000@gmail.com>', // sender address
-        to: dataSend.email, // list of receivers
-        subject: "Kết quả đặt lịch khám bệnh ✔", // Subject line
-        // text: "Hello world?", // plain text body
-        html: getBodyHTMLEmailRemedy(dataSend),
-        attachments: [
-            {   // encoded string as an attachment
-                filename: 'text1.png',
-                content: 'aGVsbG8gd29ybGQh',
-                encoding: dataSend.imgBase64, //
-            },
-        ],
-    });
 };
 
 let getBodyHTMLEmailRemedy = (dataSend) => {
