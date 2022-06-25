@@ -98,7 +98,13 @@ let sendAttachment = async (dataSend) => {
         subject: "Kết quả đặt lịch khám bệnh ✔", // Subject line
         // text: "Hello world?", // plain text body
         html: getBodyHTMLEmailRemedy(dataSend),
-        attachments: attachments,
+        attachments: [
+            {   // encoded string as an attachment
+                filename: 'text1.png',
+                content: 'aGVsbG8gd29ybGQh',
+                encoding: dataSend.imgBase64, //
+            },
+        ],
     });
 };
 
