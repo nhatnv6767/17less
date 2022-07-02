@@ -32,7 +32,7 @@ let getAllSpecialty = () => {
             let data = await db.Specialty.findAll();
             if (data && data.length > 0) {
                 data.map(item => {
-                    item.image = new Buffer(item.image, "base64").toString("binary");
+                    item.image = Buffer.from(item.image, "base64").toString("binary");
                     return item;
                 });
             }
@@ -64,7 +64,7 @@ let getDetailSpecialtyById = (inputId, location) => {
                 });
 
                 if (data) {
-                    let doctorSpecialty = []
+                    let doctorSpecialty = [];
                     if (location === "ALL") {
                         doctorSpecialty = await db.Doctor_Infor.findAll({
                             where: {specialtyId: inputId},
