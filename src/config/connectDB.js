@@ -11,6 +11,12 @@ const sequelize = new Sequelize(
         /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
         dialect: 'postgres',
         logging: false,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        }
     }
 );
 
