@@ -55,3 +55,4 @@ module.exports = {
 };
 
 //npx sequelize-cli db:migrate --to migration-create-user.js
+// npx sequelize-cli db:migrate
