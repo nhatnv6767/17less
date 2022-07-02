@@ -9,7 +9,13 @@
     "query": {
       "raw": true
     },
-    "timezone": "+09:00"
+    "timezone": "+09:00",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false,
+      }
+    }
   },
   "test": {
     "username": "root",
