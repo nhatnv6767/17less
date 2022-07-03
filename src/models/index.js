@@ -29,21 +29,6 @@ const customizeConfig = {
   }
 }
 
-
-const tempt = {
-  "dialect": "postgres",
-  "logging": false,
-  "query": {
-    "raw": true
-  },
-  "timezone": "+09:00",
-  "dialectOptions": {
-    "ssl": {
-      "require": true,
-      "rejectUnauthorized": false
-    }
-  }
-}
 sequelize = new Sequelize(db_name, db_username, db_password, customizeConfig);
 
 fs
