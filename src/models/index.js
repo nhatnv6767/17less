@@ -11,7 +11,22 @@ let sequelize;
 let db_name=process.env.DB_DATABASE_NAME
 let db_username=process.env.DB_USERNAME
 let db_password=process.env.DB_PASSWORD
+let db_host=process.env.DB_HOST
 const customizeConfig = {
+  host: db_host,
+  /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+  dialect: 'postgres',
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
+}
+
+
+const tempt = {
   "dialect": "postgres",
   "logging": false,
   "query": {
