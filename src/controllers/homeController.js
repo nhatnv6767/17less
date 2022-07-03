@@ -6,7 +6,7 @@ let getHomePage = async (req, res) => {
         // vì đã cấu hình đường dẫn trong file viewEngine.js nên sẽ tự động tìm
         return res.render('homepage.ejs', {
             // truyền biến data ra view
-            data: JSON.stringify({})
+            // data: JSON.stringify({})
         })
     } catch (e) {
         console.log(e)
