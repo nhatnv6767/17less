@@ -1,13 +1,18 @@
 // https://sequelize.org/docs/v6/getting-started/
 const { Sequelize } = require('sequelize');
+require('dotenv').config();
 
 // Option 3: Passing parameters separately (other dialects)
+let db_name=process.env.DB_DATABASE_NAME
+let db_username=process.env.DB_USERNAME
+let db_password=process.env.DB_PASSWORD
+let db_host=process.env.DB_HOST
 const sequelize = new Sequelize(
-    'd63m8huri282f9', // database
-    'dybqwefxtfguek', // username
-    '0edc2facb04ae0552289a91d9a479a9bab9522145284fadcc47e9915f11910d7',
+    db_name, // database
+    db_username, // username
+    db_password,
     {
-        host: 'ec2-23-23-151-191.compute-1.amazonaws.com',
+        host: db_host,
         /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
         dialect: 'postgres',
         logging: false,
