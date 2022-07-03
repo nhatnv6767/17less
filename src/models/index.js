@@ -10,7 +10,24 @@ const env = process.env.NODE_ENV || 'development';
 const db = {};
 
 let sequelize;
-sequelize = new Sequelize(config.database, config.username, config.password, config);
+let db_name=process.env.DB_DATABASE_NAME
+let db_username=process.env.DB_USERNAME
+let db_password=process.env.DB_PASSWORD
+const customizeConfig = {
+  "dialect": "postgres",
+  "logging": false,
+  "query": {
+    "raw": true
+  },
+  "timezone": "+09:00",
+  "dialectOptions": {
+    "ssl": {
+      "require": true,
+      "rejectUnauthorized": false
+    }
+  }
+}
+sequelize = new Sequelize(db_name, db_username, db_password, customizeConfig);
 
 
 // if (config.use_env_variable) {
