@@ -17,6 +17,10 @@ const customizeConfig = {
   /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
   dialect: 'postgres',
   logging: false,
+  query: {
+    raw: true
+  },
+  timezone: "+09:00",
   dialectOptions: {
     ssl: {
       require: true,
